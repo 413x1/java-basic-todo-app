@@ -3,7 +3,9 @@ public class TodoApp {
     public static String[] data = new String[10];
     public static void main(String[] args) {
 //        testShowTodo();
-        testAddTodo();
+//        testAddTodo();
+        testDeleteTodo();
+
     }
 
     public static void showTodo() {
@@ -64,8 +66,35 @@ public class TodoApp {
         showTodo();
     }
 
-    public static void deleteTodo() {
+    public static boolean deleteTodo(Integer idx) {
+        var r_idx = (idx - 1);
 
+        if(r_idx >= data.length) {
+            return false;
+        }
+        var _temp_data = data;
+        _temp_data[r_idx] = null;
+        for (int i = 0; i < data.length; i++) {
+            if(_temp_data[i] == null && i < (data.length-1)) {
+                data[i] = _temp_data[i+1];
+                _temp_data[i+1] = null;
+            }
+
+            data[i] = _temp_data[i];
+        }
+        return true;
+    }
+
+    public static void testDeleteTodo() {
+        addTodo("Kerja 1");
+        addTodo("Kerja 2");
+        addTodo("Kerja 3");
+        addTodo("Kerja 4");
+        addTodo("Kerja 5");
+        addTodo("Kerja 6");
+//        showTodo();
+        deleteTodo(3);
+        showTodo();
     }
 
     public static void viewShowTodo() {
