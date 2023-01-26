@@ -2,7 +2,7 @@ public class TodoApp {
 
     public static String[] data = new String[10];
     public static void main(String[] args) {
-
+        testShowTodo();
     }
 
     public static void showTodo() {
@@ -15,6 +15,13 @@ public class TodoApp {
             }
 
         }
+    }
+
+    public static void testShowTodo() {
+        data[1] = "Belajar Jave";
+        data[2] = "Belajar Python";
+        data[3] = "Belajar Algoritma";
+        showTodo();
     }
 
     public static void addTodo() {
