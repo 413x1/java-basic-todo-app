@@ -72,15 +72,17 @@ public class TodoApp {
         if(r_idx >= data.length) {
             return false;
         }
-        var _temp_data = data;
-        _temp_data[r_idx] = null;
-        for (int i = 0; i < data.length; i++) {
-            if(_temp_data[i] == null && i < (data.length-1)) {
-                data[i] = _temp_data[i+1];
-                _temp_data[i+1] = null;
-            }
 
-            data[i] = _temp_data[i];
+        if (data[(idx-1)] == null) {
+            return false;
+        }
+
+        for (int i = (idx - 1); i < data.length; i++) {
+            if(i == (data.length - 1)) {
+                data[i] = null;
+            }else {
+                data[i] = data[i+1];
+            }
         }
         return true;
     }
@@ -93,7 +95,14 @@ public class TodoApp {
         addTodo("Kerja 5");
         addTodo("Kerja 6");
 //        showTodo();
-        deleteTodo(3);
+        var result = deleteTodo(3);
+        System.out.println(result);
+
+        result = deleteTodo(100);
+        System.out.println(result);
+
+        result = deleteTodo(5);
+        System.out.println(result);
         showTodo();
     }
 
