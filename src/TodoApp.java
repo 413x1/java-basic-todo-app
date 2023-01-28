@@ -1,11 +1,25 @@
 public class TodoApp {
 
     public static String[] data = new String[10];
+
+    public static java.util.Scanner scanner = new java.util.Scanner(System.in);
     public static void main(String[] args) {
 //        testShowTodo();
 //        testAddTodo();
-        testDeleteTodo();
+//        testDeleteTodo();
 
+//        test_input();
+    }
+
+    public static void test_input(){
+        System.out.println("Nama yang dimasukan adalah " + input("Masukan nama"));
+        System.out.println("String yang dimasukan adalah " + input("Masukan string"));
+    }
+
+    public static String input(String info){
+        System.out.println(info+" : ");
+        String data_input = scanner.nextLine();
+        return data_input;
     }
 
     public static void showTodo() {
@@ -107,7 +121,26 @@ public class TodoApp {
     }
 
     public static void viewShowTodo() {
+        while (true) {
+            showTodo();
 
+            System.out.println("Menu : ");
+            System.out.println("1. Tambah task");
+            System.out.println("2. Hapus task");
+            System.out.println("3. Keluar");
+
+            var menu = input("Masukan menu : ");
+
+            if (menu.equals("1")) {
+                viewAddTodo();
+            } else if (menu.equals("2")) {
+                viewDeleteTodo();
+            } else if (menu.equals("3")) {
+                break;
+            } else {
+                System.out.println("Pilihan menu tidak ada");
+            }
+        }
     }
 
     public static void viewAddTodo() {
