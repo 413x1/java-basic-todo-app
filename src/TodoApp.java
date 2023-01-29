@@ -4,11 +4,8 @@ public class TodoApp {
 
     public static java.util.Scanner scanner = new java.util.Scanner(System.in);
     public static void main(String[] args) {
-//        testShowTodo();
-//        testAddTodo();
-//        testDeleteTodo();
-
-//        test_input();
+//        viewShowTodo();
+        testViewDeleteTodo();
     }
 
     public static void test_input(){
@@ -17,7 +14,7 @@ public class TodoApp {
     }
 
     public static String input(String info){
-        System.out.println(info+" : ");
+        System.out.print(info+" : ");
         String data_input = scanner.nextLine();
         return data_input;
     }
@@ -144,10 +141,43 @@ public class TodoApp {
     }
 
     public static void viewAddTodo() {
+        System.out.println("MENAMBAH TASK");
 
+        var task = input("Masukan task name (x untuk batal) : ");
+
+        if (task.equals("x")) {
+            viewShowTodo();
+        } else {
+            addTodo(task);
+        }
+    }
+
+    public static void testViewAddTodo() {
+        viewAddTodo();
+        showTodo();
     }
 
     public static void viewDeleteTodo() {
+        System.out.println("MENGHAPUS TODO");
 
+        var idx = input("Masukan nomor task (x untuk batal) : ");
+
+        if(idx.equals("x")) {
+            viewShowTodo();
+        } else {
+            boolean success = deleteTodo(Integer.valueOf(idx));
+            if(!success) {
+                System.out.println("Gagal menghapus task");
+            }
+        }
+    }
+
+    public static void testViewDeleteTodo() {
+        addTodo("Makan");
+        addTodo("Tidur");
+        addTodo("Minum");
+        showTodo();
+        viewDeleteTodo();
+        showTodo();
     }
 }
